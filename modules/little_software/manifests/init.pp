@@ -36,14 +36,19 @@
 # Copyright 2013 Your name here, unless otherwise noted.
 #
 class little_software {
-  package { 'php5-gd': 
-    ensure => installed, 
+  package { 'php5-gd':
+    ensure => installed,
     notify => Service['httpd'],
   }
 
-  package { 'php5-mysql': 
-    ensure => installed, 
+  package { 'php5-mysql':
+    ensure => installed,
     notify => Service['httpd'],
+  }
+
+  file { '/tmp/data.sql':
+    ensure => file,
+    source => 'puppet:///modules/little_software/data.sql',
   }
 
   file { '/opt/little-software/inc/config.php':
@@ -55,6 +60,7 @@ class little_software {
   mysql::db { 'littlesoftware':
     user     => 'little',
     password => 'software',
-    sql      => '/opt/little-software/install/sql/data.sql',
+    sql      => '/tmp/data.sql',
+    require  => File['/tmp/data.sql'],
   }
 }

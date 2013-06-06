@@ -2,13 +2,13 @@
 if ( basename( $_SERVER['PHP_SELF'] ) == 'config.php' )
     die( 'This page cannot be loaded directly' );
 
-define('SITE_URL', 'http://stats.yourwebsite.com/');
-define('SITE_PATH', '/home/username/public_html/');
+define('SITE_URL', 'http://192.168.33.10/');
+define('SITE_PATH', '/opt/little-software');
 define('MYSQL_HOST', 'localhost');
-define('MYSQL_USER', 'user');
-define('MYSQL_PASS', 'pass');
-define('MYSQL_DB', 'database');
-define('MYSQL_PREFIX', 'lss_');
+define('MYSQL_USER', 'little');
+define('MYSQL_PASS', 'software');
+define('MYSQL_DB', 'littlesoftware');
+define('MYSQL_PREFIX', 'little_');
 // Only enable for developing!
 define('SITE_DEBUG', true);
 // Set to false to disable cross site request forgery protection (not recommended)
